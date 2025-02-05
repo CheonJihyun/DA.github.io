@@ -11,7 +11,7 @@
     />
     <style>
       body {
-        background: #444;
+        background: #1e1e1e;
         color: #ddd;
       }
 
@@ -20,24 +20,35 @@
         margin: auto;
         padding: 20px;
       }
-
       .collapsible {
-        border: 1px solid #555;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
       }
       .collapsible button {
+        background: none;
         border: none;
-        padding: 8px 12px;
+        font-size: inherit; /* 제목 크기 유지 */
         cursor: pointer;
-        font-size: 14px;
       }
       .collapsible-content {
-        display: none;
-        padding: 10px;
-        border-top: 1px solid #555;
-        margin-top: 5px;
+        display: block; /* 기본적으로 펼쳐진 상태 */
+      }
+
+      h2 {
+        margin-left: 0px;
+      }
+      h3 {
+        margin-left: 20px;
+      }
+      h4 {
+        margin-left: 40px;
+      }
+
+      /* h1, h2, h3, h4 제외한 모든 요소에 indent 추가 */
+      .markdown-body :not(h1):not(h2):not(h3):not(h4) {
+        margin-left: 20px;
       }
     </style>
   </head>
@@ -51,36 +62,58 @@
         .then((response) => response.text())
         .then((text) => {
           let htmlContent = marked.parse(text);
-          console.log("Converted Markdown to HTML:", htmlContent); // 변환된 HTML 확인용
+          document.getElementById("md-content").innerHTML = htmlContent;
 
-          // Markdown이 HTML로 변환된 후 실행되도록 setTimeout 사용
           setTimeout(() => {
-            htmlContent = htmlContent.replace(
-              /<h2>(.*?)<\/h2>/g,
-              '<div class="collapsible"><button onclick="toggleCollapse(this)">➕ $1</button><div class="collapsible-content">'
-            );
-            htmlContent = htmlContent.replace(
-              /<h3>/g,
-              '<div class="collapsible-content"><h3>'
-            );
-            htmlContent = htmlContent.replace(/<\/h3>/g, "</h3></div>");
-            htmlContent = htmlContent.replace(/<\/h2>/g, "</div>");
+            let currentHeading = null;
 
-            document.getElementById("md-content").innerHTML = htmlContent;
-          }, 100); // 100ms 지연하여 Markdown 로딩 이후 변환 실행
+            // h2, h3, h4 순차적으로 접기 기능 적용
+            document.querySelectorAll("h2, h3, h4").forEach((heading) => {
+              const wrapper = document.createElement(heading.tagName);
+              wrapper.classList.add("collapsible");
+
+              const button = document.createElement("button");
+              button.innerText = "➖"; // 기본적으로 펼쳐진 상태
+              button.onclick = function () {
+                const content = this.parentElement.nextElementSibling;
+                if (content.style.display === "none") {
+                  content.style.display = "block";
+                  this.innerText = "➖";
+                } else {
+                  content.style.display = "none";
+                  this.innerText = "➕";
+                }
+              };
+
+              const headingText = document.createElement("span");
+              headingText.innerHTML = heading.innerHTML;
+
+              wrapper.appendChild(button);
+              wrapper.appendChild(headingText);
+              heading.replaceWith(wrapper);
+
+              const content = document.createElement("div");
+              content.classList.add("collapsible-content");
+
+              let nextElement = wrapper.nextElementSibling;
+              while (
+                nextElement &&
+                !["H2", "H3", "H4"].includes(nextElement.tagName)
+              ) {
+                const temp = nextElement.nextElementSibling;
+                content.appendChild(nextElement);
+                nextElement = temp;
+              }
+
+              wrapper.after(content);
+
+              // 각 제목에 맞는 margin-left 적용
+              if (heading.tagName === "H3") wrapper.style.marginLeft = "20px";
+              if (heading.tagName === "H4") wrapper.style.marginLeft = "40px";
+            });
+          }, 100);
         })
         .catch((error) => console.error("Markdown file not found", error));
-
-      function toggleCollapse(button) {
-        const content = button.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-          button.innerText = button.innerText.replace("➖", "➕");
-        } else {
-          content.style.display = "block";
-          button.innerText = button.innerText.replace("➕", "➖");
-        }
-      }
     </script>
   </body>
 </html>
