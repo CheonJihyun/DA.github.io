@@ -53,10 +53,13 @@
         color: #c9d1d9;
         text-decoration: none;
       }
+      .content {
+        min-height: 100px;
+      }
       #pdf_viewer {
         display: flex;
         width: 80%;
-        min-height: 100px;
+        height: 100%;
         margin: 0 auto;
       }
       #copyright {
@@ -81,11 +84,10 @@
     </div>
     <hr />
     <div class="margin" id="margin_top"></div>
-    <div class="content">
+    <div class="content" onload="iHeight();">
       <iframe
         id="pdf_viewer"
         src="./SQLD/SQLD_Part2-1_merged.pdf#toolbar=0&navpanes=0&scrollbar=0"
-        onload="iHeight();"
       ></iframe>
     </div>
     <div class="margin" id="margin_bottom"></div>
