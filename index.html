@@ -25,6 +25,16 @@
       <md-block src="./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md">
         `markdown file not found`
       </md-block>
+      <script>
+        fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
+          .then((response) => response.text())
+          .then((text) => {
+            document.getElementById("md-content").innerText = text;
+          })
+          .catch((error) => console.error("Markdown file not found", error));
+      </script>
+
+      <pre id="md-content">Loading markdown...</pre>
     </div>
   </body>
 </html>
