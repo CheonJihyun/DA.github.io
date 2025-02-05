@@ -3,151 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Collapse Test</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css"
-    />
+    <title>cheonji_DA</title>
     <script>
       document.documentElement.style.backgroundColor = "#0d1117";
       document.documentElement.style.color = "#c9d1d9";
     </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
-      /* body {
-        background: #1e1e1e;
-        color: #ddd;
-      } */
-
-      .markdown-body {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-      }
-      .collapsible {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-      }
-      .collapsible button {
-        background: none;
-        border: none;
-        font-size: inherit; /* 제목 크기 유지 */
-        cursor: pointer;
-      }
-      .collapsible-content {
-        display: block; /* 기본적으로 펼쳐진 상태 */
-      }
-
-      h2 {
-        margin-left: 20px;
-      }
-      h3 {
-        margin-left: 20px;
+      .header {
+        height: 80px;
       }
       h4 {
-        margin-left: 40px;
+        font-weight: normal;
       }
-
-      .markdown-body :not(h1):not(h2):not(h3):not(h4):not(span) {
-        margin-left: 20px;
+      a {
+        color: #c9d1d9;
+        /* text-decoration: none; */
+      }
+      #title a {
+        text-decoration: none;
+      }
+      .margin {
+        height: 50px;
+      }
+      .footer p {
+        text-align: center;
+      }
+      #github_link {
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div class="markdown-body">
-      <div id="md-content">Loading markdown...</div>
+    <div class="header">
+      <div id="title">
+        <h2><a href="./index.html">Data Analytics</a></h2>
+      </div>
     </div>
-
-    <script>
-      fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
-        .then((response) => response.text())
-        .then((text) => {
-          let htmlContent = marked.parse(text);
-          document.getElementById("md-content").innerHTML = htmlContent;
-
-          setTimeout(() => {
-            let currentHeading = null;
-
-            document.querySelectorAll("h2, h3, h4").forEach((heading) => {
-              const wrapper = document.createElement(heading.tagName);
-              wrapper.classList.add("collapsible");
-
-              // 버튼 생성
-              const button = document.createElement("button");
-              button.textContent = "➖";
-              button.onclick = toggleCollapse;
-
-              // 제목 텍스트
-              const headingText = document.createElement("span");
-              headingText.innerHTML = heading.innerHTML;
-
-              // 래퍼에 버튼과 텍스트 추가
-              wrapper.appendChild(button);
-              wrapper.appendChild(headingText);
-              heading.replaceWith(wrapper);
-
-              // 콘텐츠 영역 생성
-              const content = document.createElement("div");
-              content.classList.add("collapsible-content");
-
-              // 다음 요소들 중 동일 레벨 제목이 나올 때까지 모두 content에 추가
-              let nextElement = wrapper.nextElementSibling;
-              while (nextElement) {
-                const nextHeadingLevel = getHeadingLevel(nextElement.tagName);
-                const currentHeadingLevel = getHeadingLevel(heading.tagName);
-
-                // 동일 레벨 이상의 제목 발견 시 중단
-                if (nextHeadingLevel <= currentHeadingLevel) break;
-
-                const temp = nextElement.nextElementSibling;
-                content.appendChild(nextElement);
-                nextElement = temp;
-              }
-
-              // 래퍼 다음에 content 추가
-              wrapper.after(content);
-
-              // margin-left 조정
-              if (heading.tagName === "H3") wrapper.style.marginLeft = "20px";
-              if (heading.tagName === "H4") wrapper.style.marginLeft = "40px";
-            });
-
-            // 제목 레벨 추출 함수 (H2 -> 2, H3 -> 3 등)
-            function getHeadingLevel(tagName) {
-              return parseInt(tagName.replace("H", ""), 10) || 99;
-            }
-
-            // 접기/펼치기 핸들러
-            function toggleCollapse() {
-              const wrapper = this.parentElement;
-              const content = wrapper.nextElementSibling;
-              const isCollapsed = content.style.display === "none";
-
-              // 현재 상태 토글
-              content.style.display = isCollapsed ? "block" : "none";
-              this.textContent = isCollapsed ? "➖" : "➕";
-
-              // 하위 모든 콘텐츠 일괄 처리 (H2인 경우에만)
-              //   if (wrapper.tagName === "H2") {
-              //     const nestedContents = content.querySelectorAll(
-              //       ".collapsible-content"
-              //     );
-              //     nestedContents.forEach((nestedContent) => {
-              //       nestedContent.style.display = isCollapsed ? "block" : "none";
-              //       const nestedButton =
-              //         nestedContent.previousElementSibling.querySelector(
-              //           "button"
-              //         );
-              //       if (nestedButton)
-              //         nestedButton.textContent = isCollapsed ? "➖" : "➕";
-              //     });
-              //   }
-            }
-          }, 100);
-        })
-        .catch((error) => console.error("Markdown file not found", error));
-    </script>
+    <div class="content">
+      <h3>Projects</h3>
+      <h3>Study</h3>
+      <h3>SQLD</h3>
+      <h4>
+        <ul>
+          <li><a>Part 1 단권화 + 오답노트</a></li>
+          <li><a>Part 2-1 단권화 + 오답노트</a></li>
+          <li><a>Part 2-2 단권화</a></li>
+          <li><a href="./markdown.html">Part 2-2 오답노트</a></li>
+          <li><a>Part 2-3 단권화</a></li>
+          <li><a>Part 2-3 오답노트</a></li>
+        </ul>
+      </h4>
+      <h3>Bigdata Analysis Engineer</h3>
+      <div class="margin"></div>
+      <hr />
+      <div class="footer">
+        <p>cheonjihyun 2025</p>
+        <div id="github_link">
+          <a href="https://github.com/CheonJihyun">
+            <i class="fa fa-github" style="font-size: 24px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
