@@ -55,7 +55,11 @@
       #title a {
         text-decoration: none;
       }
-
+      #pdf_viewer {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+      }
       #copyright {
         display: grid;
         height: 50px;
@@ -79,20 +83,10 @@
     <hr />
     <div class="margin" id="margin_top"></div>
     <div class="content">
-      <h3>Projects</h3>
-      <h3>Study</h3>
-      <h3>SQLD</h3>
-      <h4>
-        <ul>
-          <li><a>Part 1 단권화 + 오답노트</a></li>
-          <li><a href="./pdf.html">Part 2-1 단권화 + 오답노트</a></li>
-          <li><a>Part 2-2 단권화</a></li>
-          <li><a href="./markdown.html">Part 2-2 오답노트</a></li>
-          <li><a>Part 2-3 단권화</a></li>
-          <li><a>Part 2-3 오답노트</a></li>
-        </ul>
-      </h4>
-      <h3>Bigdata Analysis Engineer</h3>
+      <iframe
+        id="pdf_viewer"
+        src="./SQLD/SQLD_Part2-1_merged.pdf#toolbar=0&navpanes=0&scrollbar=0"
+      ></iframe>
     </div>
     <div class="margin" id="margin_bottom"></div>
     <hr />
