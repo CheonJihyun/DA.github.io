@@ -46,8 +46,7 @@
         margin-left: 40px;
       }
 
-      /* h1, h2, h3, h4 제외한 모든 요소에 indent 추가 */
-      .markdown-body :not(h1):not(h2):not(h3):not(h4) {
+      .markdown-body :not(h1):not(h2):not(h3):not(h4):not(span) {
         margin-left: 20px;
       }
     </style>
@@ -67,7 +66,6 @@
           setTimeout(() => {
             let currentHeading = null;
 
-            // h2, h3, h4 순차적으로 접기 기능 적용
             document.querySelectorAll("h2, h3, h4").forEach((heading) => {
               const wrapper = document.createElement(heading.tagName);
               wrapper.classList.add("collapsible");
@@ -79,9 +77,44 @@
                 if (content.style.display === "none") {
                   content.style.display = "block";
                   this.innerText = "➖";
+
+                  // h2를 펼칠 때 h3, h4도 함께 펼치기
+                  if (heading.tagName === "H2") {
+                    let nextElement = content.nextElementSibling;
+                    while (nextElement && nextElement.tagName !== "H2") {
+                      if (nextElement.classList.contains("collapsible")) {
+                        const nextButton = nextElement.querySelector("button");
+                        const nextContent = nextElement.nextElementSibling;
+                        if (nextButton.innerText === "➕") {
+                          // h3 또는 h4가 접혀 있는 상태라면 그대로 유지
+                          nextContent.style.display = "none";
+                        } else {
+                          // h3 또는 h4가 펼쳐진 상태라면 펼치기
+                          nextContent.style.display = "block";
+                        }
+                      }
+                      nextElement = nextElement.nextElementSibling;
+                    }
+                  }
                 } else {
                   content.style.display = "none";
                   this.innerText = "➕";
+
+                  // h2를 접을 때 h3, h4도 함께 접기
+                  if (heading.tagName === "H2") {
+                    let nextElement = content.nextElementSibling;
+                    while (nextElement && nextElement.tagName !== "H2") {
+                      if (nextElement.classList.contains("collapsible")) {
+                        const nextButton = nextElement.querySelector("button");
+                        const nextContent = nextElement.nextElementSibling;
+                        if (nextContent.style.display !== "none") {
+                          nextContent.style.display = "none";
+                          nextButton.innerText = "➕";
+                        }
+                      }
+                      nextElement = nextElement.nextElementSibling;
+                    }
+                  }
                 }
               };
 
