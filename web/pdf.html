@@ -28,6 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Nanum+Gothic&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./pdf_style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Google tag (gtag.js) -->
@@ -44,73 +45,11 @@
 
       gtag("config", "G-BR8NH1HP96");
     </script>
-    <style>
-      body {
-        font-family: "Nanum Gothic", serif;
-        /* font-weight: 400; */
-        /* font-style: normal; */
-      }
-      .header {
-        display: grid;
-        align-items: center;
-        font-family: "Moirai One", serif;
-        font-weight: 400;
-      }
-      .margin {
-        height: 100px;
-      }
-      #title {
-        text-align: center;
-        font-size: 24px;
-      }
-      #title a {
-        color: #c9d1d9;
-        text-decoration: none;
-      }
-      .content {
-        display: flex;
-        width: 80%;
-        margin: 0 auto;
-        min-height: 100px;
-        max-height: 100%;
-      }
-      #pdf_content {
-        position: relative;
-        margin: 0 auto;
-        width: 70.721%; /* 1:1.414 비율 (A4) */
-        padding-bottom: 100%;
-      }
-      #pdf_viewer {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-      #copyright {
-        display: grid;
-        height: 50px;
-        align-items: center;
-      }
-      #copyright p {
-        text-align: center;
-        font-size: 10px;
-      }
-      #github_link {
-        text-align: center;
-      }
-      #github_link > a > i {
-        color: #c9d1d9;
-      }
-      hr {
-        width: 75%;
-        border-color: #ccc;
-        border-width: 1px 0 0 0;
-      }
-    </style>
   </head>
   <body>
     <div class="header">
       <div>
-        <h1 id="title"><a href="./index.html">DATA ANALYTICS</a></h1>
+        <h1 id="title"><a href="../index.html">DATA ANALYTICS</a></h1>
       </div>
     </div>
     <hr />
@@ -119,7 +58,7 @@
       <div id="pdf_content">
         <iframe
           id="pdf_viewer"
-          src="./SQLD/SQLD_Part2-1_merged.pdf#toolbar=0&navpanes=0&scrollbar=0"
+          src="../SQLD/SQLD_Part2-1_merged.pdf#toolbar=0&navpanes=0&scrollbar=0"
         ></iframe>
       </div>
     </div>

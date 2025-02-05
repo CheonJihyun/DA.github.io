@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SQLD Part 2-2 단권화</title>
+    <title>마케팅 지표</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <link
       rel="stylesheet"
@@ -21,6 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Nanum+Gothic&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./markdown_style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Google tag (gtag.js) -->
@@ -41,91 +42,11 @@
       document.documentElement.style.backgroundColor = "#0d1117";
       document.documentElement.style.color = "#c9d1d9";
     </script>
-    <style>
-      body {
-        font-family: "Nanum Gothic", serif;
-        /* font-weight: 400; */
-        /* font-style: normal; */
-      }
-      .header {
-        display: grid;
-        align-items: center;
-        font-family: "Moirai One", serif;
-        font-weight: 400;
-      }
-      .margin {
-        height: 20px;
-      }
-      #title {
-        text-align: center;
-        font-size: 24px;
-      }
-      #title a {
-        color: #c9d1d9;
-        text-decoration: none;
-      }
-      #copyright {
-        display: grid;
-        height: 50px;
-        align-items: center;
-      }
-      #copyright p {
-        text-align: center;
-        font-size: 10px;
-      }
-      #github_link {
-        text-align: center;
-      }
-      #github_link > a > i {
-        color: #c9d1d9;
-      }
-      hr {
-        width: 75%;
-        border-color: #ccc;
-        border-width: 1px 0 0 0;
-      }
-      .markdown-body {
-        max-width: 75%;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .collapsible {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-      }
-      .collapsible button {
-        background: none;
-        border: none;
-        font-size: inherit; /* 제목 크기 유지 */
-        cursor: pointer;
-      }
-      .collapsible-content {
-        display: block; /* 기본적으로 펼쳐진 상태 */
-      }
-
-      h2 {
-        margin-left: 20px;
-      }
-      h3 {
-        margin-left: 20px;
-      }
-      h4 {
-        margin-left: 40px;
-      }
-      .markdown-body
-        :not(h1):not(h2):not(h3):not(h4):not(span):not(ul):not(li):not(
-          code
-        ):not(strong):not(em) {
-        margin-left: 20px;
-      }
-    </style>
   </head>
   <body>
     <div class="header">
       <div>
-        <h1 id="title"><a href="./index.html">DATA ANALYTICS</a></h1>
+        <h1 id="title"><a href="../index.html">DATA ANALYTICS</a></h1>
       </div>
     </div>
     <hr />
@@ -134,7 +55,7 @@
       <div id="md-content">Loading markdown...</div>
     </div>
     <script>
-      fetch("./SQLD/SQLD 단권화_Part2-2_천지현_250204.md")
+      fetch("../class/20250205_지표.md")
         .then((response) => response.text())
         .then((text) => {
           let htmlContent = marked.parse(text);

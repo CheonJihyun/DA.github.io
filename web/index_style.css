@@ -1,0 +1,53 @@
+body {
+    font-family: "Nanum Gothic", serif;
+    /* font-weight: 400; */
+    /* font-style: normal; */
+  }
+  .header {
+    display: grid;
+    align-items: center;
+    font-family: "Moirai One", serif;
+    font-weight: 400;
+  }
+  #margin_bottom {
+    height: 100px;
+  }
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  #title {
+    text-align: center;
+    font-size: 24px;
+  }
+  #title a {
+    text-decoration: none;
+  }
+  h3 {
+    margin-top: 50px;
+  }
+  h4 {
+    font-weight: normal;
+    line-height: 150%;
+  }
+  a {
+    color: #c9d1d9;
+    /* text-decoration: none; */
+  }
+  #copyright {
+    display: grid;
+    height: 50px;
+    align-items: center;
+  }
+  #copyright p {
+    text-align: center;
+    font-size: 10px;
+  }
+  #github_link {
+    text-align: center;
+  }
+  hr {
+    width: 75%;
+    border-color: #ccc;
+    border-width: 1px 0 0 0;
+  }
