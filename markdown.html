@@ -9,11 +9,68 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script>
       document.documentElement.style.backgroundColor = "#0d1117";
       document.documentElement.style.color = "#c9d1d9";
     </script>
     <style>
+      body {
+        font-family: "Nanum Gothic", serif;
+        /* font-weight: 400; */
+        /* font-style: normal; */
+      }
+      .header {
+        display: grid;
+        align-items: center;
+        padding: 15px;
+        font-family: "Moirai One", serif;
+        font-weight: 400;
+      }
+      .margin {
+        height: 20px;
+      }
+      #title {
+        text-align: center;
+        font-size: large;
+      }
+      #title a {
+        color: #c9d1d9;
+        text-decoration: none;
+      }
+      #copyright {
+        display: grid;
+        height: 50px;
+        align-items: center;
+      }
+      #copyright p {
+        text-align: center;
+        font-size: 10px;
+      }
+      #github_link {
+        text-align: center;
+      }
+      #github_link > a > i {
+        color: #c9d1d9;
+      }
+      hr {
+        width: 75%;
+        border-color: #ccc;
+        border-width: 1px 0 0 0;
+      }
       .markdown-body {
         max-width: 800px;
         margin: auto;
@@ -44,17 +101,22 @@
       h4 {
         margin-left: 40px;
       }
-
       .markdown-body :not(h1):not(h2):not(h3):not(h4):not(span) {
         margin-left: 20px;
       }
     </style>
   </head>
   <body>
+    <div class="header">
+      <div>
+        <h1 id="title"><a href="./index.html">DATA ANALYTICS</a></h1>
+      </div>
+    </div>
+    <hr />
+    <div class="margin" id="margin_top"></div>
     <div class="markdown-body">
       <div id="md-content">Loading markdown...</div>
     </div>
-
     <script>
       fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
         .then((response) => response.text())
@@ -144,5 +206,17 @@
         })
         .catch((error) => console.error("Markdown file not found", error));
     </script>
+    <div class="margin" id="margin_bottom"></div>
+    <hr />
+    <div class="footer">
+      <div id="copyright">
+        <p>Copyright 2021. cheonjihyun All rights reserved.</p>
+      </div>
+      <div id="github_link">
+        <a href="https://github.com/CheonJihyun">
+          <i class="fa fa-github" style="font-size: 24px"></i>
+        </a>
+      </div>
+    </div>
   </body>
 </html>
