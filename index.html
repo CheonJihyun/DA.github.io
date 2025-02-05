@@ -37,7 +37,7 @@
       }
 
       h2 {
-        margin-left: 0px;
+        margin-left: 20px;
       }
       h3 {
         margin-left: 20px;
@@ -70,80 +70,77 @@
               const wrapper = document.createElement(heading.tagName);
               wrapper.classList.add("collapsible");
 
+              // 버튼 생성
               const button = document.createElement("button");
-              button.innerText = "➖"; // 기본적으로 펼쳐진 상태
-              button.onclick = function () {
-                const content = this.parentElement.nextElementSibling;
-                if (content.style.display === "none") {
-                  content.style.display = "block";
-                  this.innerText = "➖";
+              button.textContent = "➖";
+              button.onclick = toggleCollapse;
 
-                  // h2를 펼칠 때 h3, h4도 함께 펼치기
-                  if (heading.tagName === "H2") {
-                    let nextElement = content.nextElementSibling;
-                    while (nextElement && nextElement.tagName !== "H2") {
-                      if (nextElement.classList.contains("collapsible")) {
-                        const nextButton = nextElement.querySelector("button");
-                        const nextContent = nextElement.nextElementSibling;
-                        if (nextButton.innerText === "➕") {
-                          // h3 또는 h4가 접혀 있는 상태라면 그대로 유지
-                          nextContent.style.display = "none";
-                        } else {
-                          // h3 또는 h4가 펼쳐진 상태라면 펼치기
-                          nextContent.style.display = "block";
-                        }
-                      }
-                      nextElement = nextElement.nextElementSibling;
-                    }
-                  }
-                } else {
-                  content.style.display = "none";
-                  this.innerText = "➕";
-
-                  // h2를 접을 때 h3, h4도 함께 접기
-                  if (heading.tagName === "H2") {
-                    let nextElement = content.nextElementSibling;
-                    while (nextElement && nextElement.tagName !== "H2") {
-                      if (nextElement.classList.contains("collapsible")) {
-                        const nextButton = nextElement.querySelector("button");
-                        const nextContent = nextElement.nextElementSibling;
-                        if (nextContent.style.display !== "none") {
-                          nextContent.style.display = "none";
-                          nextButton.innerText = "➕";
-                        }
-                      }
-                      nextElement = nextElement.nextElementSibling;
-                    }
-                  }
-                }
-              };
-
+              // 제목 텍스트
               const headingText = document.createElement("span");
               headingText.innerHTML = heading.innerHTML;
 
+              // 래퍼에 버튼과 텍스트 추가
               wrapper.appendChild(button);
               wrapper.appendChild(headingText);
               heading.replaceWith(wrapper);
 
+              // 콘텐츠 영역 생성
               const content = document.createElement("div");
               content.classList.add("collapsible-content");
 
+              // 다음 요소들 중 동일 레벨 제목이 나올 때까지 모두 content에 추가
               let nextElement = wrapper.nextElementSibling;
-              while (
-                nextElement &&
-                !["H2", "H3", "H4"].includes(nextElement.tagName)
-              ) {
+              while (nextElement) {
+                const nextHeadingLevel = getHeadingLevel(nextElement.tagName);
+                const currentHeadingLevel = getHeadingLevel(heading.tagName);
+
+                // 동일 레벨 이상의 제목 발견 시 중단
+                if (nextHeadingLevel <= currentHeadingLevel) break;
+
                 const temp = nextElement.nextElementSibling;
                 content.appendChild(nextElement);
                 nextElement = temp;
               }
 
+              // 래퍼 다음에 content 추가
               wrapper.after(content);
 
-              // 각 제목에 맞는 margin-left 적용
+              // margin-left 조정
               if (heading.tagName === "H3") wrapper.style.marginLeft = "20px";
               if (heading.tagName === "H4") wrapper.style.marginLeft = "40px";
             });
+
+            // 제목 레벨 추출 함수 (H2 -> 2, H3 -> 3 등)
+            function getHeadingLevel(tagName) {
+              return parseInt(tagName.replace("H", ""), 10) || 99;
+            }
+
+            // 접기/펼치기 핸들러
+            function toggleCollapse() {
+              const wrapper = this.parentElement;
+              const content = wrapper.nextElementSibling;
+              const isCollapsed = content.style.display === "none";
+
+              // 현재 상태 토글
+              content.style.display = isCollapsed ? "block" : "none";
+              this.textContent = isCollapsed ? "➖" : "➕";
+
+              // 하위 모든 콘텐츠 일괄 처리 (H2인 경우에만)
+              //   if (wrapper.tagName === "H2") {
+              //     const nestedContents = content.querySelectorAll(
+              //       ".collapsible-content"
+              //     );
+              //     nestedContents.forEach((nestedContent) => {
+              //       nestedContent.style.display = isCollapsed ? "block" : "none";
+              //       const nestedButton =
+              //         nestedContent.previousElementSibling.querySelector(
+              //           "button"
+              //         );
+              //       if (nestedButton)
+              //         nestedButton.textContent = isCollapsed ? "➖" : "➕";
+              //     });
+              //   }
+            }
           }, 100);
         })
         .catch((error) => console.error("Markdown file not found", error));
