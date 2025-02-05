@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdown Test</title>
+    <title>Markdown Collapse Test</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <link
       rel="stylesheet"
@@ -14,11 +14,31 @@
         background: #1e1e1e;
         color: #ddd;
       }
-
       .markdown-body {
         max-width: 800px;
         margin: auto;
         padding: 20px;
+      }
+      .collapsible {
+        background-color: #333;
+        border: 1px solid #555;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+      .collapsible button {
+        background: #444;
+        color: #ffcc00;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .collapsible-content {
+        display: none;
+        padding: 10px;
+        border-top: 1px solid #555;
+        margin-top: 5px;
       }
     </style>
   </head>
@@ -26,13 +46,39 @@
     <div class="markdown-body">
       <div id="md-content">Loading markdown...</div>
     </div>
+
     <script>
       fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
         .then((response) => response.text())
         .then((text) => {
-          document.getElementById("md-content").innerHTML = marked.parse(text);
+          let htmlContent = marked.parse(text);
+
+          // 자동으로 특정 헤더(h2~h4)를 접을 수 있도록 버튼 추가
+          htmlContent = htmlContent.replace(
+            /<h2>(.*?)<\/h2>/g,
+            '<div class="collapsible"><button onclick="toggleCollapse(this)">➕ $1</button><div class="collapsible-content">'
+          );
+          htmlContent = htmlContent.replace(
+            /<h3>/g,
+            '<div class="collapsible-content"><h3>'
+          );
+          htmlContent = htmlContent.replace(/<\/h3>/g, "</h3></div>");
+          htmlContent = htmlContent.replace(/<\/h2>/g, "</div>");
+
+          document.getElementById("md-content").innerHTML = htmlContent;
         })
         .catch((error) => console.error("Markdown file not found", error));
+
+      function toggleCollapse(button) {
+        const content = button.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+          button.innerText = button.innerText.replace("➖", "➕");
+        } else {
+          content.style.display = "block";
+          button.innerText = button.innerText.replace("➕", "➖");
+        }
+      }
     </script>
   </body>
 </html>
