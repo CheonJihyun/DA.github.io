@@ -3,38 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>markdown_test</title>
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.css"
-      integrity="sha512-XNBMUjy86G874D+6YN8vaBJpEut/Q0IafwiWxO5CoZDyaVXxbzyzacBpA55GPYhetzeLhxUbgdETrigRIVeNqQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    /> -->
+    <title>Markdown Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css"
-      integrity="sha512-OtEVQKlou4M/GacGwvUl27uo+XNyHfUlMP/furdKClgpkU++3SepORomgRC1uV7qjJ5fnV8ENVt2qXkR8enD1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
+    <style>
+      .markdown-body {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: #1e1e1e;
+        color: #ddd;
+      }
+    </style>
   </head>
   <body>
-    <div class="markdown-body'">
-      <md-block src="./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md">
-        `markdown file not found`
-      </md-block>
-      <script>
-        fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
-          .then((response) => response.text())
-          .then((text) => {
-            document.getElementById("md-content").innerText = text;
-          })
-          .catch((error) => console.error("Markdown file not found", error));
-      </script>
-
-      <pre id="md-content">Loading markdown...</pre>
+    <div class="markdown-body">
+      <div id="md-content">Loading markdown...</div>
     </div>
+
+    <script>
+      fetch("./SQLD/SQLD 오답노트_Part2-2_천지현_250205.md")
+        .then((response) => response.text())
+        .then((text) => {
+          document.getElementById("md-content").innerHTML = marked.parse(text);
+        })
+        .catch((error) => console.error("Markdown file not found", error));
+    </script>
   </body>
 </html>
