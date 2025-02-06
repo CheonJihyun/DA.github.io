@@ -71,7 +71,7 @@ body {
     margin-left: 40px;
   }
   .markdown-body
-    :not(h1):not(h2):not(h3):not(h4):not(span):not(li>ul):not(li li):not(
+    :not(h1):not(h2):not(h3):not(h4):not(span):not(li>ul):not(li>ol):not(li li):not(
       code
     ):not(strong):not(em) {
     margin-left: 20px;
