@@ -87,4 +87,5 @@ body {
     .markdown-body * {margin-left: 0 !important;}
     h1, h2 {font-size: 1.2rem !important;}
     h3 {font-size: 1em !important;}
+    button {padding: 0 !important;}
   }
