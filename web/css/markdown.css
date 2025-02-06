@@ -76,7 +76,16 @@ body {
     ):not(strong):not(em) {
     margin-left: 20px;
     font-family: "Nanum Gothic", serif;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.75;
     color:#c9d1d9;
+  }
+
+  @media (max-width: 768px) {
+    h3 {margin-left: 0;}
+    h4 {margin-left: 0;}
+    hr {width: 100%;}
+    .markdown-body {width: 100%; margin: 0 auto;}
+    .markdown-body
+    :not(h1):not(h2):not(h3):not(h4):not(span):not(li>ul):not(li>ol):not(li li):not(li>p):not(code):not(strong):not(em) {margin-left: 0;}
   }
