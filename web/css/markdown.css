@@ -84,5 +84,5 @@ body {
   @media (max-width: 768px) {
     hr {width: 100%;}
     .markdown-body {width: 95% !important; margin: 0 auto;}
-    .markdown-body * {margin-left: 0; !important}
+    .markdown-body * {margin-left: 0 !important;}
   }
