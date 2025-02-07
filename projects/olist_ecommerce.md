@@ -13,7 +13,7 @@
 1. 별점
 2. 리뷰 점수 분포
 
-<img src="./olist_ecommerce/review_score_hist.png">
+<img src="/Users/cheonjihyun/Desktop/DA5.github.io/projects/olist_ecommerce/review_score_hist.png">
 
 ### AARRR 지표 선정
 
