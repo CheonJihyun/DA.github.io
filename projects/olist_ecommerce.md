@@ -10,7 +10,10 @@
 
 ### 데이터 EDA
 
-1. EDA 내용
+1. 별점
+2. 리뷰 점수 분포
+
+<img src="./olist_ecommerce/review_score_hist.png">
 
 ### AARRR 지표 선정
 
