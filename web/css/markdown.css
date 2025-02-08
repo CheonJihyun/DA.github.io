@@ -75,7 +75,7 @@ body {
       code
     ):not(strong):not(em):not(mjx-container):not(svg) {
     margin-left: 20px;
-    font-family: "Nanum Gothic", serif;
+    font-family: "Nanum Gothic", sans-serif;
     font-size: 14px;
     line-height: 1.75;
     color:#c9d1d9;
