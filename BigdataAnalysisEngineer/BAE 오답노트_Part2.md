@@ -380,7 +380,10 @@
 35.  피어슨 상관계수
 
 - 모집단과 표본 상관계수로 모두 이용 가능
-- 상관계수 $$r = \frac{\sum\limits_{i=1}^n (x_{1i}-\bar{x}_1)(x_{2i}-\bar{x}_2)}{\sqrt{\sum\limits_{i=1}^n (x_i-\bar{x})^2} \cdot \sqrt{\sum\limits_{i=1}^n (y_i-\bar{y})^2}}$$
+- 상관계수 {% raw %}
+$r = \frac{\sum\limits_{i=1}^n (x_{1i}-\bar{x}_1)(x_{2i}-\bar{x}_2)}
+{\sqrt{\sum\limits_{i=1}^n (x_i-\bar{x})^2} \cdot \sqrt{\sum\limits_{i=1}^n (y_i-\bar{y})^2}}$
+{% endraw %}
 - 결정계수 ${r^{2}}$: $x$로부터 $y$를 예측할 수 있는 정도
 
 1.   독립변수 선택 방법
