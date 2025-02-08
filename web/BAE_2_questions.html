@@ -80,6 +80,10 @@
           let htmlContent = marked.parse(text);
           document.getElementById("md-content").innerHTML = htmlContent;
 
+          if (window.MathJax) {
+            MathJax.typesetPromise();
+          }
+
           setTimeout(() => {
             let currentHeading = null;
 
