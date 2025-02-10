@@ -10,16 +10,17 @@
 
 ### 데이터 EDA
 
-1. 데이터셋 관계도
+1. 데이터셋 구조
+   
+<img src="../projects/olist_ecommerce/ERD.png">
+
+2. 데이터셋 관계도
 
 <img src="../projects/olist_ecommerce/dataset.png">
 
-2. ERD
+3. 별점
 
-<img src="../projects/olist_ecommerce/ERD.png">
-
-별점
-리뷰 점수 분포
+4. 리뷰 점수 분포
 
 ### AARRR 지표 선정
 
