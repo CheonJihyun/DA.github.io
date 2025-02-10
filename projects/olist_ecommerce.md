@@ -10,10 +10,16 @@
 
 ### 데이터 EDA
 
-1. 별점
-2. 리뷰 점수 분포
+1. 데이터셋 관계도
 
-<img src="/Users/cheonjihyun/Desktop/DA5.github.io/projects/olist_ecommerce/review_score_hist.png">
+<img src="../projects/olist_ecommerce/dataset.png">
+
+2. ERD
+
+<img src="../projects/olist_ecommerce/ERD.png">
+
+별점
+리뷰 점수 분포
 
 ### AARRR 지표 선정
 
