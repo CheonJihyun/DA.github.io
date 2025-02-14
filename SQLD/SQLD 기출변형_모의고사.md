@@ -24,9 +24,6 @@
 |46|<span style='color:skyblue'>④</span>|47|<span style='color:red'>①</span> - 정답: ②|48|<span style='color:skyblue'>①</span>|
 |49|<span style='color:skyblue'>③</span>|50|<span style='color:skyblue'>②</span>|||
 
-<span style='color:red'>①②③④⑤</span>
-<span style='color:skyblue'>①②③④⑤</span>
-
 ### 오답노트 + 관련 개념 정리
 
 1\. 데이터 모델링의 3단계: 개념적 데이터 모델링 -> 논히적 데이터 모델링 -> 물리적 데이터 모델링
@@ -69,3 +66,6 @@
 44\. COUNT(상수), COUNT(*): NULL 상관 없이 모든 행의 수 출력
 
 47\. AND 연산자가 OR 연산자보다 우선순위가 높음
+
+<span style='color:red'>①②③④⑤</span>
+<span style='color:skyblue'>①②③④⑤</span>
