@@ -67,5 +67,11 @@
 
 47\. AND 연산자가 OR 연산자보다 우선순위가 높음
 
+## CHAPTER 2 기출변형 모의고사 2회
+
+### 문제풀이
+
 <span style='color:red'>①②③④⑤</span>
 <span style='color:skyblue'>①②③④⑤</span>
+
+### 오답노트 + 관련 개념 정리
