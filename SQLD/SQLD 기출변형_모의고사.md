@@ -47,9 +47,17 @@
 
 15\. DDL(Data Definition Language): 데이터를 정의하는 명령어(CREATE, ALTER, DROP, RENAME, TRUNCATE 등)
 
+18\. MINUS는 중복을 제거
+
 19\. RATIO_TO_REPORT: 파티션 내의 비율을 반환, 0~1 사이의 값을 리턴
 
 20\. CONNECT_BY_ISLEAF: 해당 데이터가 리프 데이터면 1, 그렇지 않으면 0을 반환
+
+22\. DISTINCT를 사용하면 중복된 부서번호는 하나만 나옴
+<br>MINUS: 중복 자동 제거
+<br>EXISTS: 특정 조건을 만족하는 데이터가 존재하는지 확인하는 명령어
+<br>SELECT 1, SELECT 2 → 존재여부 확인
+<br>GROUP BY: 부서별로 중복 제거되어 한번 씩만 나옴
 
 26\. CROSS JOIN: 테이블 간 생길 수 있는 모든 데이터의 조합을 반환 (M*N 건의 결과 나옴)
 
