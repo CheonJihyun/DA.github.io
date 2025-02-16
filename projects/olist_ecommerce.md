@@ -29,3 +29,7 @@
 3. Retention: 재구매율(범위리텐션), 활성사용자수(WAU, MAU)
 4. Revenue: ARPU(사용자 1명당 평균 매출), AOV(고객당 평균 결제 금액), MRR(월간반복매출), 매출 상위 고객, 바우처와 매출의 연관성
 5. Referral: 리뷰점수, 리뷰수, 유지율
+
+#### Additional Reference
+
+- https://velog.io/@hsty94/OLIST-%EC%BD%94%ED%98%B8%ED%8A%B8-%EB%B6%84%EC%84%9D-%EB%A6%AC%ED%85%90%EC%85%98
