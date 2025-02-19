@@ -210,11 +210,11 @@
 
 |문제|답|문제|답|문제|답|
 |:--:|--|:--:|--|:--:|--|
-|1|<span style='color:skyblue'></span>|2|<span style='color:skyblue'></span>|3|<span style='color:skyblue'></span>|
-|4|<span style='color:skyblue'></span>|5|<span style='color:skyblue'></span>|6|<span style='color:skyblue'></span>|
-|7|<span style='color:skyblue'></span>|8|<span style='color:skyblue'></span>|9|<span style='color:skyblue'></span>|
-|10|<span style='color:skyblue'></span>|11|<span style='color:skyblue'></span>|12|<span style='color:skyblue'></span>|
-|13|<span style='color:skyblue'></span>|14|<span style='color:skyblue'></span>|15|<span style='color:skyblue'></span>|
+|1|<span style='color:skyblue'>4</span>|2|<span style='color:skyblue'>4</span>|3|<span style='color:skyblue'>3</span>|
+|4|<span style='color:skyblue'>3</span>|5|<span style='color:skyblue'>4</span>|6|<span style='color:skyblue'>1</span>|
+|7|<span style='color:skyblue'>2</span>|8|<span style='color:skyblue'>3</span>|9|<span style='color:skyblue'>3</span>|
+|10|<span style='color:skyblue'>3</span>|11|<span style='color:skyblue'>1</span>|12|<span style='color:skyblue'>3</span>|
+|13|<span style='color:skyblue'>2</span>|14|<span style='color:skyblue'></span>|15|<span style='color:skyblue'></span>|
 |16|<span style='color:skyblue'></span>|17|<span style='color:skyblue'></span>|18|<span style='color:skyblue'></span>|
 |19|<span style='color:skyblue'></span>|20|<span style='color:skyblue'></span>|21|<span style='color:skyblue'></span>|
 |22|<span style='color:skyblue'></span>|23|<span style='color:skyblue'></span>|24|<span style='color:skyblue'></span>|
