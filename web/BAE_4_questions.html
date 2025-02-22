@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>빅데이터분석기사 Part 4 문제풀이</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+        },
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moirai+One&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/markdown.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BR8NH1HP96"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-BR8NH1HP96");
+    </script>
+    <script>
+      document.documentElement.style.backgroundColor = "#0d1117";
+      document.documentElement.style.color = "#c9d1d9";
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h1 id="title"><a href="../index.html">DATA ANALYTICS</a></h1>
+      </div>
+    </div>
+    <hr />
+    <div class="margin" id="margin_top"></div>
+    <div class="markdown-body">
+      <div id="md-content">Loading markdown...</div>
+    </div>
+    <script>
+      fetch("../BigdataAnalysisEngineer/BAE 오답노트_Part4.md")
+        .then((response) => response.text())
+        .then((text) => {
+          let htmlContent = marked.parse(text);
+          document.getElementById("md-content").innerHTML = htmlContent;
+
+          if (window.MathJax) {
+            MathJax.typesetPromise();
+          }
+
+          setTimeout(() => {
+            let currentHeading = null;
+
+            document.querySelectorAll("h2, h3, h4").forEach((heading) => {
+              const wrapper = document.createElement(heading.tagName);
+              wrapper.classList.add("collapsible");
+
+              // 버튼 생성
+              const button = document.createElement("button");
+              button.textContent = "➖";
+              button.onclick = toggleCollapse;
+
+              // 제목 텍스트
+              const headingText = document.createElement("span");
+              headingText.innerHTML = heading.innerHTML;
+
+              // 래퍼에 버튼과 텍스트 추가
+              wrapper.appendChild(button);
+              wrapper.appendChild(headingText);
+              heading.replaceWith(wrapper);
+
+              // 콘텐츠 영역 생성
+              const content = document.createElement("div");
+              content.classList.add("collapsible-content");
+
+              // 다음 요소들 중 동일 레벨 제목이 나올 때까지 모두 content에 추가
+              let nextElement = wrapper.nextElementSibling;
+              while (nextElement) {
+                const nextHeadingLevel = getHeadingLevel(nextElement.tagName);
+                const currentHeadingLevel = getHeadingLevel(heading.tagName);
+
+                // 동일 레벨 이상의 제목 발견 시 중단
+                if (nextHeadingLevel <= currentHeadingLevel) break;
+
+                const temp = nextElement.nextElementSibling;
+                content.appendChild(nextElement);
+                nextElement = temp;
+              }
+
+              // 래퍼 다음에 content 추가
+              wrapper.after(content);
+
+              // margin-left 조정
+              if (heading.tagName === "H3") wrapper.style.marginLeft = "20px";
+              if (heading.tagName === "H4") wrapper.style.marginLeft = "40px";
+            });
+
+            // 제목 레벨 추출 함수 (H2 -> 2, H3 -> 3 등)
+            function getHeadingLevel(tagName) {
+              return parseInt(tagName.replace("H", ""), 10) || 99;
+            }
+
+            // 접기/펼치기 핸들러
+            function toggleCollapse() {
+              const wrapper = this.parentElement;
+              const content = wrapper.nextElementSibling;
+              const isCollapsed = content.style.display === "none";
+
+              // 현재 상태 토글
+              content.style.display = isCollapsed ? "block" : "none";
+              this.textContent = isCollapsed ? "➖" : "➕";
+
+              // 하위 모든 콘텐츠 일괄 처리 (H2인 경우에만)
+              //   if (wrapper.tagName === "H2") {
+              //     const nestedContents = content.querySelectorAll(
+              //       ".collapsible-content"
+              //     );
+              //     nestedContents.forEach((nestedContent) => {
+              //       nestedContent.style.display = isCollapsed ? "block" : "none";
+              //       const nestedButton =
+              //         nestedContent.previousElementSibling.querySelector(
+              //           "button"
+              //         );
+              //       if (nestedButton)
+              //         nestedButton.textContent = isCollapsed ? "➖" : "➕";
+              //     });
+              //   }
+            }
+          }, 100);
+        })
+        .catch((error) => console.error("Markdown file not found", error));
+    </script>
+    <div class="margin" id="margin_bottom"></div>
+    <hr />
+    <div class="footer">
+      <div id="copyright">
+        <p>Copyright 2025. cheonjihyun All rights reserved.</p>
+      </div>
+      <div id="github_link">
+        <a href="https://github.com/CheonJihyun">
+          <i class="fa fa-github" style="font-size: 24px"></i>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
