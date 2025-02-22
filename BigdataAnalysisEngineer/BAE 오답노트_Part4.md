@@ -18,6 +18,8 @@
 
 ## CHAPTER 02 분석 기법 적용
 
+### 챕터 마무리 문제
+
 |번호|답|번호|답|번호|답|
 |:--:|:--|:--:|:--|:--:|:--|
 |1|<span style='color:skyblue'></span>|2|<span style='color:skyblue'></span>|3|<span style='color:skyblue'></span>|
@@ -27,8 +29,6 @@
 |13|<span style='color:skyblue'></span>|14|<span style='color:skyblue'></span>|15|<span style='color:skyblue'></span>|
 |16|<span style='color:skyblue'></span>|17|<span style='color:skyblue'></span>|18|<span style='color:skyblue'></span>|
 |19|<span style='color:skyblue'></span>|20|<span style='color:skyblue'></span>|||
-
-### 챕터 마무리 문제
 
 ### 오답노트 + 관련 개념 정리
 
